@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicle Detail{% endblock %}
+
+{% block content %}
+    <h1>{{ vehicle.plate }}</h1>
+    <p>Model: {{ vehicle.model }}</p>
+    <p>Type: {{ vehicle.type }}</p>
+    <p>Millage: {{ vehicle.millage }}</p>
+    <p>Maintenance: {{ vehicle.maintenance }}</p>
+    <p>Next Service: {{ vehicle.next_service }}</p>
+    <p>Insurance: {{ vehicle.insurance }}</p>
+    <p>Driver List: {{ vehicle.driver_list }}</p>
+    <a href="{% url 'vehicle-list' %}">Back to Vehicle List</a>
+{% endblock %}
