@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Driver List{% endblock %}
+
+{% block content %}
+    <h1>Period List</h1>
+    <ul>
+        {% for period in periods %}
+            <li><a href="{% url 'period-detail' period.pk %}">{{ period }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'period-create' %}">Add New Period</a>
+{% endblock %}

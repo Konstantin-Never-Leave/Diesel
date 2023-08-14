@@ -1,8 +1,10 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager, Group
 from django.db import models
+# from Vehicle.models import Vehicle
 
 
 class CustomUserManager(BaseUserManager):
+
     def create_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_responsible", False)
         if not email:
@@ -30,29 +32,38 @@ class CustomUser(AbstractUser):
     mdfys if future:
     1. add slugfield name.surname
     """
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    username = None
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     is_responsible = models.BooleanField()
     objects = CustomUserManager()
+    department = models.CharField(max_length=255)
+    personal_number = models.PositiveIntegerField(unique=True, default=0)
+    # associated_vehicle = models.ForeignKey(Vehicle, on_delete=models.SET_DEFAULT, default="NO VEHICLE",
+    #                                        related_name="associated vehicle")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
-class Driver(models.Model):
-    """
-    mdfys if future:
-    1. add slugfield name.surname
-    """
-    name = models.CharField(max_length=255)
-    surname = models.CharField(max_length=255)
-    personal_number = models.PositiveIntegerField(unique=True, default=0)
-    department = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f"{self.name} {self.surname}"
+# class Driver(models.Model):
+#     """
+#     mdfys if future:
+#     1. add slugfield name.surname
+#     """
+#     name = models.CharField(max_length=255)
+#     surname = models.CharField(max_length=255)
+#     personal_number = models.PositiveIntegerField(unique=True, default=0)
+#     department = models.CharField(max_length=255)
+#
+#     def __str__(self):
+#         return f"{self.name} {self.surname}"
 
 
 class Responsible(models.Model):
     pass
+

@@ -17,8 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Vehicle import urls as vehicle_urls
+from CustomUser import urls as driver_urls
+from MainPage import urls as main_urls
+from Fuel import urls as fuel_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(vehicle_urls), name="Vehicle")
+    path("", include(main_urls), name="main page"),
+    path("vehicles/", include(vehicle_urls), name="vehicle"),
+    path("drivers/", include(driver_urls), name="drivers"),
+    path("fuelings/", include(fuel_urls), name="fuel"),
+
 ]

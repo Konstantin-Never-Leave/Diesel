@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Fueling List{% endblock %}
+
+{% block content %}
+    <h1>Fueling List</h1>
+    <ul>
+        {% for fueling in fuelings %}
+            <li><a href="{% url 'fueling-detail' fueling.pk %}">{{ fueling.date }} {{ fueling.liters }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'fueling-create' %}">Add fueling event</a>
+{% endblock %}

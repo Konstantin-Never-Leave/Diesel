@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Driver Detail{% endblock %}
+
+{% block content %}
+    <h1>Driver Detail</h1>
+    <p><strong>Name:</strong> {{ driver.name }} {{ driver.surname }}</p>
+    <p><strong>Personal number:</strong> {{ driver.personal_number }}</p>
+    <p><strong>Department:</strong> {{ driver.department }}</p>
+    <!-- Add more details as needed -->
+{% endblock %}

@@ -1,19 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Default Title{% endblock %}</title>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- Your css and other head elements here -->
 </head>
 <body>
-    <div class="header">
-        <!-- Add header content here if needed -->
+    <div class="side-menu">
+        <!-- Logo -->
+        <div class="logo">
+            <!-- Your logo content here -->
+        </div>
+
+        <!-- Menu -->
+        <ul class="menu">
+            <li><a href="{% url 'logout' %}">Login / logout</a></li>
+            <li><a href="{% url 'vehicle-list' %}">Vehicles</a></li>
+            <li><a href="{% url 'driver-list' %}">Drivers</a></li>
+            <li><a href="{% url 'fueling-list' %}">Fuelings</a></li>
+            <li><a href="{% url 'period-list' %}">Vehicle-Driver Period</a></li>
+            <!-- Add more menu items here -->
+        </ul>
     </div>
+
     <div class="content">
         {% block content %}
-        <!-- Add main content here -->
         {% endblock %}
     </div>
-    <div class="footer">
-        <!-- Add footer content here if needed -->
-    </div>
+
+    <!-- Your JavaScript and other footer elements here -->
 </body>
 </html>

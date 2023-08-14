@@ -1,0 +1,24 @@
+.side-menu {
+    width: 200px;
+    background-color: #f1f1f1;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-menu li {
+    padding: 8px;
+}
+
+.content {
+    margin-left: 220px; /* Adjust as needed based on your side menu width */
+    padding: 20px;
+}

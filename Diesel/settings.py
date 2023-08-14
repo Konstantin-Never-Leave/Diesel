@@ -17,7 +17,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = Path(__file__).parent.parent
 APPS_ROOT = PROJECT_ROOT.joinpath('apps')
-TEMP = [os.path.join(BASE_DIR, 'templates')]
+TEMPLATES_ROOT = [os.path.join(BASE_DIR, 'templates')]
+STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
+
 sys.path.append(str(APPS_ROOT))
 
 # Quick-start development settings - unsuitable for production
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'Diesel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': TEMPLATES_ROOT,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,6 +92,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = 'CustomUser.CustomUser'
+# LOGIN_REDIRECT_URL =
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -117,7 +120,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files (css, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
