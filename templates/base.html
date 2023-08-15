@@ -3,32 +3,46 @@
 <html>
 <head>
     <title>{% block title %}My Website{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Your css and other head elements here -->
 </head>
 <body>
-    <div class="side-menu">
-        <!-- Logo -->
-        <div class="logo">
-            <!-- Your logo content here -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="side-menu">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <!-- Your logo content here -->
+                    </div>
+
+                    <!-- Menu -->
+
+                       {% if user.first_name %}
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                       {% else %}
+                       <p>Please, login</p>
+                       {% endif %}
+                    <div class="list-group">
+                        <p><a href="{% url 'vehicle-list' %}" class="list-group-item list-group-item-action list-group-item-primary">Vehicles</a>
+                        <a href="{% url 'driver-list' %}" class="list-group-item list-group-item-action list-group-item-primary">Drivers</a>
+                        <a href="{% url 'fueling-list' %}" class="list-group-item list-group-item-action list-group-item-primary">Fuelings</a>
+                        <a href="{% url 'period-list' %}" class="list-group-item list-group-item-action list-group-item-primary">Vehicle-Driver Period</a>
+                        <a href="{% url 'logout' %}" class="list-group-item list-group-item-action list-group-item-primary">logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
-
-        <!-- Menu -->
-        <ul class="menu">
-            <li><a href="{% url 'logout' %}">Login / logout</a></li>
-            <li><a href="{% url 'vehicle-list' %}">Vehicles</a></li>
-            <li><a href="{% url 'driver-list' %}">Drivers</a></li>
-            <li><a href="{% url 'fueling-list' %}">Fuelings</a></li>
-            <li><a href="{% url 'period-list' %}">Vehicle-Driver Period</a></li>
-            <!-- Add more menu items here -->
-        </ul>
     </div>
-
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    <!-- Your JavaScript and other footer elements here -->
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

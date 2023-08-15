@@ -9,5 +9,6 @@
             <li><a href="{% url 'fueling-detail' fueling.pk %}">{{ fueling.date }} {{ fueling.liters }}</a></li>
         {% endfor %}
     </ul>
-    <a href="{% url 'fueling-create' %}">Add fueling event</a>
+    <a href="{% url 'fueling-create' %}" class="btn btn-primary disabled" style="position: relative" role="button" aria-disabled="false">Add fueling event</a>
+
 {% endblock %}

@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 from CustomUser.models import CustomUser
 from Vehicle.models import Vehicle
 
@@ -13,7 +15,7 @@ class FuelCase(models.Model):
     liters = models.PositiveIntegerField(blank=True)
     millage = models.IntegerField()
     charged_to = models.CharField(max_length=255)
-    date = models.DateTimeField(auto_now_add=True, blank=True)
+    date = models.DateTimeField(default=timezone.now, blank=True, editable=True)
     bill_photo = models.ImageField(upload_to='uploads/%Y/%m/%d/', blank=True)
 
     def save(self, *args, **kwargs):

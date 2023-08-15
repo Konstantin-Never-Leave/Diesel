@@ -116,6 +116,9 @@ class VehicleDriverPeriod(models.Model):
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateField(null=True, blank=True)
 
+    class Meta:
+        permissions = [("can_access_vehicle_driver_period", "Can Access Vehicle Driver Period")]
+
     def save(self, *args, **kwargs):
         if not self.pk:
             # Only set added_by if this is a new instance being created

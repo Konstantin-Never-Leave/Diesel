@@ -6,6 +6,6 @@
     <h1>Period Detail</h1>
     <p><strong>Vehicle:</strong> {{ period.vehicle }}</p>
     <p><strong>Used by</strong> {{ period.driver }}</p>
-    <p><strong>From:</strong> {{ period.start_date }} <strong>Till:</strong> {{ period.end_date }}</p>
+    <p><strong>From:</strong> {{ period.start_date.date }} <strong>Till:</strong> {{ period.end_date }}</p>
     <!-- Add more details as needed -->
 {% endblock %}

@@ -9,6 +9,6 @@
     <p>Liters: {{ fueling.liters }}</p>
     <p>Millage: {{ fueling.millage }}</p>
     <p>Bill photo: {{ fueling.bill_photo }}</p>
-    <a href="#">Modify fueling event | </a>
+    <a href="{% url 'fueling-update' fueling.pk %}">Modify fueling event | </a>
     <a href="{% url 'fueling-list' %}">Back to Fueling List</a>
 {% endblock %}

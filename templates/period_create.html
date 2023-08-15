@@ -4,10 +4,24 @@
 
 {% block content %}
     <h1>Create New Period</h1>
+
     <form method="post">
+
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save">
+
+        {% for field in form %}
+        <ul>
+            <li>
+                {{ field.label_tag }} {{ field }}
+            </li>
+        </ul>
+                {% endfor %}
+
+        <input class="btn" type="submit" value="Save">
+        <a class="btn" href="{% url 'period-list' %}">Cancel</a>
+
     </form>
-    <a href="{% url 'period-list' %}">Cancel</a>
+
+
+
 {% endblock %}

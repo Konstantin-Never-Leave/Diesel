@@ -4,8 +4,8 @@ from MainPage.views import MainPage, LoginUser, LogoutView
 
 
 urlpatterns = [
-    path("", MainPage.as_view(), name="main-page"),
+    path("", MainPage.as_view(), name="home"),
     path("accounts/login/", LoginUser.as_view(), name="login"),
-    path("logout/", LogoutView.as_view(next_page="main-page"), name="logout"),
+    path("logout/", LogoutView.as_view(next_page="home"), name="logout"),
 
 ]
