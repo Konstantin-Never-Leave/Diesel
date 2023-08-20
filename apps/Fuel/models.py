@@ -16,6 +16,7 @@ class FuelCase(models.Model):
     millage = models.IntegerField()
     charged_to = models.CharField(max_length=255)
     date = models.DateTimeField(default=timezone.now, blank=True, editable=True)
+    amount = models.PositiveIntegerField()
     bill_photo = models.ImageField(upload_to='uploads/%Y/%m/%d/', blank=True)
 
     def save(self, *args, **kwargs):

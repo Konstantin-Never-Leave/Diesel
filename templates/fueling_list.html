@@ -1,14 +1,58 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Fueling List{% endblock %}
-
 {% block content %}
-    <h1>Fueling List</h1>
-    <ul>
-        {% for fueling in fuelings %}
-            <li><a href="{% url 'fueling-detail' fueling.pk %}">{{ fueling.date }} {{ fueling.liters }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'fueling-create' %}" class="btn btn-primary disabled" style="position: relative" role="button" aria-disabled="false">Add fueling event</a>
 
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Vehicle</th>
+      <th>Date</th>
+      <th>Liters</th>
+      <th>Amount</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for fueling in fuelings %}
+      <tr class="clickable-row" data-href="{% url 'fueling-update' fueling.pk %}">
+
+        <td>
+
+          <div class="d-flex align-items-center">
+            <img
+              src="{% static 'img/transit.png' %}"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ fueling.vehicle.plate }}</p>
+              <p class="text-muted mb-0">{{fueling.vehicle.model.brand}} {{fueling.vehicle.model}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ fueling.date|date:"d/m/Y H:i" }}</p>
+        </td>
+        <td>{{fueling.liters}} lt.</td>
+        <td>{{fueling.amount}}</td>
+        <td>{{fueling.charged_to}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'fueling-create' %}" class="btn btn-primary" style="position: relative" role="button">Add fueling event</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".clickable-row");
+    rows.forEach((row) => {
+      row.addEventListener("click", () => {
+        const link = row.getAttribute("data-href");
+        window.location.href = link;
+      });
+    });
+  });
+</script>
 {% endblock %}

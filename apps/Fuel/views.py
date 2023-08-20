@@ -9,8 +9,8 @@ from Vehicle.models import VehicleDriverPeriod
 class FuelListView(LoginRequiredMixin, ListView):
     model = FuelCase
     template_name = "fueling_list.html"
-    context_object_name = "fuelings"  # Name of the context variable for the FuelCase object in "fueling_list.html"
     login_url = "login"
+    context_object_name = "fuelings"
 
     def form_valid(self, form):
         # Set the added_by field
@@ -18,6 +18,12 @@ class FuelListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return FuelCase.objects.filter(driver=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["table_columns"] = ("Vehicle", "Date", "Liters", "Amount", "Charged To")
+
+        return context
 
 
 class FuelDetailView(LoginRequiredMixin, DetailView):
@@ -30,7 +36,7 @@ class FuelDetailView(LoginRequiredMixin, DetailView):
 class FuelCreateView(LoginRequiredMixin, CreateView):
     model = FuelCase
     template_name = "fueling_create.html"
-    fields = ["liters", "charged_to", "millage", "bill_photo"]
+    fields = ["liters", "charged_to", "millage", "amount", "bill_photo"]
     success_url = reverse_lazy("vehicle-list")
     login_url = "login"
 
@@ -54,11 +60,11 @@ class FuelUpdateView(LoginRequiredMixin, UpdateView):
     model = FuelCase
     template_name = "fueling_update.html"
     context_object_name = "fueling"
-    fields = ['driver', 'vehicle', 'liters', 'millage', 'charged_to', 'date', 'bill_photo', ]
+    fields = ["driver", "vehicle", "liters", "amount", "millage", "charged_to", "date", "bill_photo", ]
     login_url = "login"
 
     def get_success_url(self):
-        return reverse_lazy('fueling-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('fueling-list')
 
 
 class FuelDeleteView(LoginRequiredMixin, DeleteView):

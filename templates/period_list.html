@@ -1,13 +1,64 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Driver List{% endblock %}
-
 {% block content %}
-    <h1>Period List</h1>
-    <ul>
-        {% for period in periods %}
-            <li><a href="{% url 'period-detail' period.pk %}">{{ period }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'period-create' %}">Add New Period</a>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Vehicle</th>
+      <th>Driver</th>
+      <th>Date start</th>
+      <th>Date end</th>
+      <th>Issued by</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for period in periods %}
+      <tr class="clickable-row" data-href="{% url 'period-detail' period.pk %}">
+
+        <td>
+
+          <div class="d-flex align-items-center">
+
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ period.vehicle.plate }}</p>
+              <p class="text-muted mb-0">{{period.vehicle.model.brand}} {{period.vehicle.model}}</p>
+            </div>
+          </div>
+
+        </td>
+          <td>
+          <p class="fw-normal mb-1">{{ period.driver }}</p>
+        </td>
+          <td>
+          <p class="fw-normal mb-1">{{ period.start_date|date:"d/m/Y" }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ period.end_date|date:"d/m/Y" }}</p>
+        </td>
+        <td>{{period.added_by}}</td>
+
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'period-create' %}" class="btn btn-primary" style="position: relative" role="button">Add case</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".clickable-row");
+    rows.forEach((row) => {
+      row.addEventListener("click", () => {
+        const link = row.getAttribute("data-href");
+        window.location.href = link;
+      });
+    });
+  });
+</script>
 {% endblock %}
+
+
+ <section class="pb-4">
+  <div class="bg-white border rounded-5">
+
+    

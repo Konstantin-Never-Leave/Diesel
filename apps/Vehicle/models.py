@@ -16,6 +16,7 @@ class Vehicle(models.Model):
         ("HBK", "Hatchback"),
         ("SDN", "Sedan"),
         ("WGN", "Wagon"),
+        ("SUV", "SUV"),
         ("MPV", "Minivan"),
         ("VAN", "Van"),
         ("MTK", "Mini truck"),
@@ -46,7 +47,7 @@ class Vehicle(models.Model):
         super(Vehicle, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.plate}  {self.model}  {self.maintenance}"
+        return f"{self.plate}  {self.model}"
 
 
 class VehicleBrand(models.Model):
@@ -91,7 +92,7 @@ class VehicleBrand(models.Model):
     #     ("VOLVO", "Volvo"),
     #     ("VW", "Volkswagen")
     # ]
-    brand = models.CharField(max_length=5, blank=True, unique=True)
+    brand = models.CharField(max_length=10, blank=True, unique=True)
 
     def __str__(self):
         return self.brand

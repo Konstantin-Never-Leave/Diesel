@@ -30,9 +30,11 @@ class VehicleDetailView(LoginRequiredMixin, DetailView):
     context_object_name = "vehicle"  # Name of the context variable for the Vehicle object
     login_url = "login"
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return dict(context.items())
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_columns'] = ("Vehicle", "Date", "Liters", "Amount", "Customer")
+
+        return context
 
     # def get_queryset(self):
     #     return Vehicle.objects.filter(pk=1)

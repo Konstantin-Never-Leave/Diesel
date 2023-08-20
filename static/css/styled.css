@@ -1,55 +1,32 @@
-:root{
-    --color1: #6912c9;
-    --color2: #3575d6;
-
-}
-.side-menu {
-    width: 200px;
-    background-color: #f1f1f1;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.side-menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.side-menu li {
-    padding: 8px;
-}
-
-.content {
-    margin-left: 220px; /* Adjust as needed based on your side menu width */
-    padding: 20px;
-}
-
-:root{
-    --color1: #6912c9;
-    --color2: #3575d6;
-
-}
-#login_page, html{
-    background: var(--color1);
-    background: -moz-linear-gradient(left, var(--color1) 0%, var(--color2)100%);
-    background: -webkit-linear-gradient(left, var(--color1) 0%, var(--color2)100%);
-    background: linear-gradient(to right, var(--color1) 0%, var(--color2)100%);
-}
-
-.hover-row:hover {
-  background-color: #f0f0f0; /* Change this to the desired color */
-}
-
 :root {
   --white-color: #fafafb;
   --background-color: #17171e;
   --grey-color: #b5b5be;
   --dark-grey-color: #292932;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 62.5%;
+  font-weight: 500;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: var(--white-color);
+  height: 100vh;
+  background-color: #fafafa;
+}
+
+.lead { font-size: 1.5rem; font-weight: 300; }
+.container { margin: 150px auto; max-width: 960px; color: #000; }
+
 .side-bar {
   width: 23.2rem;
   height: 100%;
@@ -59,16 +36,19 @@
   transition: all 0.5s ease;
   top: 0;
 }
+
 .logo-name-wrapper {
   position: relative;
   margin-bottom: 2.1rem;
   display: flex;
   font-size: 1.2rem;
 }
+
 .logo-name {
   display: flex;
   align-items: center;
 }
+
 .logo-name__name {
   margin-left: 0.9rem;
   white-space: nowrap;
@@ -87,6 +67,7 @@
   font-size: 1.8rem;
   color: var(--grey-color);
 }
+
 .message {
   background-color: var(--dark-grey-color);
   display: flex;
@@ -97,11 +78,13 @@
   cursor: pointer;
   position: relative;
 }
+
 .message-icon {
   font-size: 2rem;
   transform: translateX(3rem);
   transition: all 0.5s ease;
 }
+
 .message-text {
   margin-left: 1.1rem;
   font-size: 1.4rem;
@@ -109,11 +92,13 @@
   transform: translateX(3rem);
   transition: all 0.5s ease;
 }
+
 .features-list {
   padding-bottom: 1rem;
   border-bottom: 1px solid #292932;
   list-style: none;
 }
+
 .features-item {
   display: flex;
   align-items: center;
@@ -135,22 +120,27 @@
   opacity: 0;
   visibility: hidden;
 }
+
 .features-item:hover {
   color: var(--white-color);
   transition: 0.5s ease;
 }
+
 .features-item:hover::before {
   opacity: 1;
   visibility: unset;
 }
+
 .features-item-icon {
   font-size: 2rem;
 }
+
 .features-item-text {
   margin-left: 1.5rem;
   transition: opacity 0.6s ease;
   opacity: 1;
 }
+
 .inbox-number {
   position: absolute;
   top: 50%;
@@ -163,9 +153,11 @@
   opacity: 1;
   transition: 0.6s linear;
 }
+
 .inbox-icon {
   position: relative;
 }
+
 .inbox-icon .status {
   position: absolute;
   top: 0;
@@ -178,6 +170,7 @@
   opacity: 0;
   transition: 0.6s linear;
 }
+
 .category-list {
   padding-top: 2.1rem;
   padding-bottom: 0.9rem;
@@ -187,6 +180,7 @@
   font-weight: 500;
   border-bottom: 1px solid #292932;
 }
+
 .category-header {
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -195,6 +189,7 @@
   margin-bottom: 1.3rem;
   white-space: nowrap;
 }
+
 .category-item {
   position: relative;
   padding: 0.9rem 1.1rem;
@@ -202,6 +197,7 @@
   cursor: pointer;
   white-space: nowrap;
 }
+
 .category-item-status {
   height: 0.8rem;
   width: 0.8rem;
@@ -211,20 +207,24 @@
   display: inline-block;
 }
 .category-item-text {
+  color: #FFFFFF;
   margin-left: 1rem;
   transition: opacity 0.6s ease;
   opacity: 1;
 }
+
 .category-item-number {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
 }
+
 .chat-list {
   padding: 2.1rem 0;
   font-size: 1.2rem;
 }
+
 .chat-header {
   text-transform: uppercase;
   line-height: 1.8rem;
@@ -232,6 +232,7 @@
   margin-bottom: 1.3rem;
   white-space: nowrap;
 }
+
 .chat-new-btn {
   color: #1e75ff;
   background-color: transparent;
@@ -247,15 +248,18 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
+
 .chat-new-btn-text {
   white-space: nowrap;
   transition: opacity 0.6s ease;
   opacity: 1;
 }
+
 .chat-icon {
   font-size: 2.1rem;
   margin-right: 1.2rem;
 }
+
 .chat-item {
   position: relative;
   display: flex;
@@ -264,6 +268,7 @@
   color: var(--grey-color);
   cursor: pointer;
 }
+
 .chat-item-avatar-wrapper {
   position: relative;
 }
@@ -279,12 +284,14 @@
   opacity: 0;
   transition: 0.6s linear;
 }
+
 .chat-item-avatar-wrapper.has-message::before {
   background-color: #1e75ff;
   border: 2px solid var(--white-color);
   height: 6px;
   width: 6px;
 }
+
 .chat-item-avatar {
   object-fit: cover;
   object-position: top;
@@ -293,6 +300,7 @@
   border-radius: 50%;
   border: 1px solid var(--white-color);
 }
+
 /* background color in inline style */
 .chat-item-status {
   height: 0.8rem;
@@ -320,12 +328,14 @@
   opacity: 1;
   transition: 0.6s linear;
 }
+
 .chat-item-name {
   white-space: nowrap;
   transition: opacity 0.6s ease;
   opacity: 1;
   margin-left: 1.4rem;
 }
+
 .tooltip {
   position: absolute;
   top: -2.1rem;
@@ -340,6 +350,7 @@
   display: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
+
 .side-bar.collapse .message:hover .tooltip,
 .features-item:hover .tooltip,
 .category-item:hover .tooltip,
@@ -349,12 +360,15 @@
   transition: all 0.5s ease;
   opacity: 1;
 }
+
 .side-bar.collapse {
   width: 6.4rem;
 }
+
 .side-bar.collapse .tooltip {
   display: block;
 }
+
 .side-bar.collapse .logo-name,
 .side-bar.collapse .category-header,
 .side-bar.collapse .chat-header,
@@ -370,6 +384,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
 .side-bar.collapse .message-text {
   opacity: 0;
   pointer-events: none;
@@ -381,7 +396,9 @@
 .side-bar.collapse .logo-name__button {
   right: 0.5rem;
 }
+
 .side-bar.collapse .inbox-icon .status,
 .side-bar.collapse .chat-item-avatar-wrapper::before {
   opacity: 1;
+}
 }
