@@ -13,13 +13,19 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
 
 </head>
-
-
+<div style="padding: 0 0 15px width: 75px; display: flex ;  position: relative ; margin-bottom: 2.1rem;">
+    <img
+            
+            src="{% static 'img/fpt-logo.svg' %}"
+            class="logo-img"
+            alt="logo app"
+            srcset=""
+    />
+</div>
 <div class="side-bar">
 
     <div class="logo-name-wrapper">
         <div class="logo-name">
-
             <img
                     src="{% static 'img/fpt-logo.svg' %}"
                     class="logo-img"
@@ -28,7 +34,13 @@
             />
 
         </div>
+        <button class="logo-name__button">
 
+            <i
+                    class="bx bx-arrow-from-right logo-name__icon"
+                    id="logo-name__icon"
+            ></i>
+        </button>
 
     </div>
     {% if user.first_name %}
@@ -39,14 +51,10 @@
     </div>
     {% endif %}
     <ul class="features-list">
-        <li class="features-item">
-            <i><span class="status"></span
-            > <img
-                    src="{% static 'img/van.svg' %}"
-                    class="features-item-icon"
-                    alt="logo app"
-                    srcset=""
-            /></i>
+        <li class="features-item inbox active">
+            <i class="bx bxs-inbox features-item-icon inbox-icon"
+            ><span class="status"></span
+            ></i>
             <a href="{% url 'vehicle-list' %}" class="category-item-text">
                 <span class="features-item-text">Vehicles</span>
                 <span class="inbox-number">99</span> <!-- MAKE HERE NOTIFICATION ABOUT MAINTENANCE--->
@@ -54,15 +62,10 @@
             </a>
         </li>
 
-        <li class="features-item">
-            <i><span class="status"></span
+        <li class="features-item inbox active">
+            <i class="bx bxs-inbox features-item-icon inbox-icon"
+            ><span class="status"></span
             ></i>
-            <img
-                    src="{% static 'img/wheel.svg' %}"
-                    class="features-item-icon"
-                    alt="logo app"
-                    srcset=""
-            />
             <a href="{% url 'period-list' %}" class="category-item-text">
                 <span class="features-item-text">Vehicles in usage</span>
                 <span class="tooltip">boom</span>
@@ -71,13 +74,8 @@
 
         <li class="features-item inbox active">
             <i class="bx bxs-inbox features-item-icon inbox-icon"
-            ><span ></span
-            ><img
-                    src="{% static 'img/fuel.svg' %}"
-                    class="features-item-icon"
-                    alt="logo app"
-                    srcset=""
-            /></i>
+            ><span class="status"></span
+            ></i>
             <a href="{% url 'fueling-list' %}" class="category-item-text">
                 <span class="features-item-text">Fueling</span>
                 <span class="tooltip">boom</span>
@@ -147,7 +145,6 @@
 
 
 </div>
-    </div>
 <body>
 <div class="row">
     <div class="col-3">
@@ -183,7 +180,6 @@
       }
     };
   });
-
 
 
 

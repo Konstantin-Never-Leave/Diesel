@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = Path(__file__).parent.parent
 APPS_ROOT = PROJECT_ROOT.joinpath('apps')
 TEMPLATES_ROOT = [os.path.join(BASE_DIR, 'templates')]
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 sys.path.append(str(APPS_ROOT))
 
 # Quick-start development settings - unsuitable for production

@@ -1,9 +1,9 @@
 @charset "UTF-8";
-/*!
- * Bootstrap  v5.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+    /*!
+     * Bootstrap  v5.3.1 (https://getbootstrap.com/)
+     * Copyright 2011-2023 The Bootstrap Authors
+     * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+     */
 
 :root,
 [data-bs-theme=light] {
@@ -734,6 +734,21 @@ progress {
   color: var(--bs-secondary-color);
 }
 
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
 .container,
 .container-fluid,
 .container-xxl,
@@ -3369,9 +3384,6 @@ textarea.form-control-lg {
   opacity: 0;
 }
 
-.collapse:not(.show) {
-  display: none;
-}
 
 .collapsing {
   height: 0;
