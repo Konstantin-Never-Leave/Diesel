@@ -1,12 +1,43 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Driver List{% endblock %}
-
 {% block content %}
-    <h1>Driver List</h1>
-    <ul>
-        {% for driver in drivers %}
-            <li><a href="{% url 'driver-detail' driver.pk %}">{{ driver.first_name }} {{ driver.last_name }}</a></li>
-        {% endfor %}
-    </ul>
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver2 m-b-110">
+                <table data-vertable="ver2">
+                    <thead>
+                    <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1">Photo</th>
+                        <th class="column100 column2" data-column="column2">Name</th>
+                        <th class="column100 column3" data-column="column3">Department</th>
+                        <th class="column100 column4" data-column="column4">Personal number</th>
+                        <th class="column100 column5" data-column="column5">Assigned vehicle</th>
+                        <th class="column100 column6" data-column="column6">Calendar</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for driver in drivers %}
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">to add photo here</td>
+                        <td class="column100 column2" data-column="column2">{{driver.last_name}} {{ driver.first_name }}
+                        </td>
+                        <td class="column100 column3" data-column="column3">{{ driver.department }}</td>
+                        <td class="column100 column4" data-column="column4">{{ driver.personal_number }}</td>
+                        <td class="column100 column5" data-column="column5">{{ driver.assigned_vehicle }}</td>
+                        <td class="column100 column6" data-column="column6">to add link to dates</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

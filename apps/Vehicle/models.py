@@ -28,12 +28,9 @@ class Vehicle(models.Model):
         choices=TYPE_CHOICES,
     )
     millage = models.PositiveIntegerField(blank=True)
-    # driver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1,)
     maintenance = models.BooleanField(default=False)
     next_service = models.PositiveIntegerField(blank=True)
     insurance = models.CharField(max_length=255, blank=True)  # link to Insurance class
-    # driver_list = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True, blank=True, related_name="drivers")
-    # driver_list = models.ForeignKey("DriverList", on_delete=models.CASCADE, blank=True)
 
     def get_absolute_url(self):
         return reverse('vehicle-detail', args=[str(self.pk)])

@@ -3,13 +3,38 @@
 {% block title %}Vehicle Detail{% endblock %}
 
 {% block content %}
-    <h1>{{ vehicle.plate }}</h1>
-    <p>Model: {{ vehicle.model }}</p>
-    <p>Type: {{ vehicle.type }}</p>
-    <p>Millage: {{ vehicle.millage }}</p>
-    <p>Maintenance: {{ vehicle.maintenance }}</p>
-    <p>Next Service: {{ vehicle.next_service }}</p>
-    <p>Insurance: {{ vehicle.insurance }}</p>
-    <p>Driver List: {{ vehicle.driver_list }}</p>
-    <a href="{% url 'vehicle-list' %}">Back to Vehicle List</a>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver2 m-b-110">
+                <table data-vertable="ver2">
+                    <thead>
+                    <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1">Vehicle</th>
+                        <th class="column100 column2" data-column="column2">Brand</th>
+                        <th class="column100 column3" data-column="column3">Model</th>
+                        <th class="column100 column4" data-column="column4">Millage</th>
+                        <th class="column100 column5" data-column="column5">Next maintenance</th>
+                        <th class="column100 column6" data-column="column6">Used by</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">{{ vehicle.plate }}</td>
+                        <td class="column100 column2" data-column="column2">{{ vehicle.model.brand }}</td>
+                        <td class="column100 column3" data-column="column3">{{ vehicle.model }}</td>
+                        <td class="column100 column4" data-column="column4">{{ vehicle.millage }}</td>
+                        <td class="column100 column5" data-column="column5">{{ vehicle.next_service }}</td>
+                        <td class="column100 column6" data-column="column6">{{ vehicle.driver_list }}</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

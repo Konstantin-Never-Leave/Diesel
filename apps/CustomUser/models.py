@@ -40,12 +40,12 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     is_responsible = models.BooleanField()
-    objects = CustomUserManager()
+
     department = models.CharField(max_length=255)
     personal_number = models.PositiveIntegerField(unique=True, default=0)
     # associated_vehicle = models.ForeignKey(Vehicle, on_delete=models.SET_DEFAULT, default="NO VEHICLE",
     #                                        related_name="associated vehicle")
-
+    objects = CustomUserManager()
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 

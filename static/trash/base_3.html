@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/styled.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <meta name="robots" content="noindex, follow">
+</head>
+
+
+<div class="side-bar">
+
+    <div class="logo-name-wrapper">
+        <div class="logo-name">
+
+            <img
+                    src="{% static 'img/fpt-logo.svg' %}"
+                    class="logo-img"
+                    alt="logo app"
+                    srcset=""
+            />
+
+        </div>
+
+
+    </div>
+    {% if user.first_name %}
+    <div class="message">
+        <i class="message-icon bx bx-message-square-edit"></i>
+        <span class="message-text">{{ user.first_name }} {{ user.last_name }}</span>
+        <span class="tooltip">Don't touch anything!</span>
+    </div>
+    {% endif %}
+    <ul class="features-list">
+        <li class="features-item">
+            <i><span class="status"></span
+            > <img
+                    src="{% static 'img/van.svg' %}"
+                    class="features-item-icon"
+                    alt="logo app"
+                    srcset=""
+            /></i>
+            <a href="{% url 'vehicle-list' %}" class="category-item-text">
+                <span class="features-item-text">Vehicles</span>
+                <span class="inbox-number">99</span> <!-- MAKE HERE NOTIFICATION ABOUT MAINTENANCE--->
+                <span class="tooltip">boom</span>
+            </a>
+        </li>
+
+        <li class="features-item">
+            <i><span class="status"></span
+            ></i>
+            <img
+                    src="{% static 'img/wheel.svg' %}"
+                    class="features-item-icon"
+                    alt="logo app"
+                    srcset=""
+            />
+            <a href="{% url 'period-list' %}" class="category-item-text">
+                <span class="features-item-text">Vehicles in usage</span>
+                <span class="tooltip">boom</span>
+            </a>
+        </li>
+
+        <li class="features-item inbox active">
+            <i class="bx bxs-inbox features-item-icon inbox-icon"
+            ><span></span
+            ><img
+                    src="{% static 'img/fuel.svg' %}"
+                    class="features-item-icon"
+                    alt="logo app"
+                    srcset=""
+            /></i>
+            <a href="{% url 'fueling-list' %}" class="category-item-text">
+                <span class="features-item-text">Fueling</span>
+                <span class="tooltip">boom</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <ul class="category-list">
+        <div class="category-header">Create items</div>
+        <li class="category-item">
+          <span
+                  class="category-item-status"
+                  style="background-color: #79d861"
+          ></span>
+            <a href="{% url 'driver-create' %}" class="category-item-text">
+                <span class="category-item-text">Add driver</span>
+            </a>
+            <span class="category-item-number"></span>
+            <span class="tooltip">Ooops</span>
+        </li>
+
+        <li class="category-item">
+          <span
+                  class="category-item-status"
+                  style="background-color: #79d861"
+          ></span>
+            <a href="{% url 'vehicle-create' %}" class="category-item-text">
+                <span class="category-item-text">Add vehicle</span>
+            </a>
+            <span class="category-item-number"></span>
+            <span class="tooltip">Ooops</span>
+        </li>
+
+        <li class="category-item">
+          <span
+                  class="category-item-status"
+                  style="background-color: #79d861"
+          ></span>
+            <a href="{% url 'fueling-create' %}" class="category-item-text">
+                <span class="category-item-text">Add fueling event</span>
+            </a>
+            <span class="category-item-number"></span>
+            <span class="tooltip">Ooops</span>
+        </li>
+
+    </ul>
+
+    <ul class="chat-list">
+        <div class="chat-header">Settings</div>
+
+        <li class="chat-item">
+          <span class="chat-item-avatar-wrapper has-message">
+
+          </span>
+            <span class="chat-item-name">Switch theme</span>
+        </li>
+        <li class="chat-item">
+          <span class="chat-item-avatar-wrapper">
+
+          </span>
+            <a href="{% url 'logout' %}">
+                <span class="chat-item-name">Logout</span>
+            </a>
+        </li>
+    </ul>
+
+
+</div>
+
+<body>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-9">
+        <div class="content">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let sideBar = document.querySelector('.side-bar');
+    let arrowCollapse = document.querySelector('#logo-name__icon');
+    let messageDiv = document.querySelector('.message');
+
+    messageDiv.onclick = () => {
+      sideBar.classList.toggle('collapse');
+      arrowCollapse.classList.toggle('collapse');
+
+      if (arrowCollapse.classList.contains('collapse')) {
+        arrowCollapse.classList = 'bx bx-arrow-from-left logo-name__icon collapse';
+      } else {
+        arrowCollapse.classList = 'bx bx-arrow-from-right logo-name__icon';
+      }
+    };
+  });
+
+
+
+
+
+
+</script>
+
+
+</html>

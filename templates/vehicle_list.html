@@ -1,13 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Vehicle List{% endblock %}
 
 {% block content %}
-    <h1>Vehicle List</h1>
-    <ul>
-        {% for vehicle in vehicles %}
-            <li><a href="{% url 'vehicle-detail' vehicle.pk %}">{{ vehicle.plate }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'vehicle-create' %}">Add New Vehicle</a>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver2 m-b-110">
+                <table data-vertable="ver2">
+                    <thead>
+                    <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1"> Vehicle</th>
+                        <th class="column100 column2" data-column="column2">Brand</th>
+                        <th class="column100 column3" data-column="column3">Model</th>
+                        <th class="column100 column4" data-column="column4">Millage</th>
+                        <th class="column100 column5" data-column="column5">Next maintenance</th>
+                        <th class="column100 column6" data-column="column6">Used by</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vehicle in vehicles %}
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">{{ vehicle.plate }}
+                        </td>
+                        <td class="column100 column2" data-column="column2">{{ vehicle.model.brand }}</td>
+                        <td class="column100 column3" data-column="column3">{{ vehicle.model }}</td>
+                        <td class="column100 column4" data-column="column4">{{ vehicle.millage }}</td>
+                        <td class="column100 column5" data-column="column5">{{ vehicle.next_service }}</td>
+                        <td class="column100 column6" data-column="column6">
+                            {% if vehicle.last_driver_name %}
+                            {{ vehicle.last_driver_name }}
+                            {% else %}
+                            Available
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+
+<!----
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".clickable-row");
+    rows.forEach((row) => {
+      row.addEventListener("click", () => {
+        const link = row.getAttribute("data-href");
+        window.location.href = link;
+      });
+    });
+  });
+
+</script>
+--->

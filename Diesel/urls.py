@@ -23,6 +23,7 @@ from Fuel import urls as fuel_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("", include(main_urls), name="main page"),
     path("vehicles/", include(vehicle_urls), name="vehicle"),
     path("drivers/", include(driver_urls), name="drivers"),

@@ -1,64 +1,40 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Driver List{% endblock %}
+
+{% block title %}Vehicle is use{% endblock %}
+
 {% block content %}
-<table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>Vehicle</th>
-      <th>Driver</th>
-      <th>Date start</th>
-      <th>Date end</th>
-      <th>Issued by</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for period in periods %}
-      <tr class="clickable-row" data-href="{% url 'period-detail' period.pk %}">
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver2 m-b-110">
+                <table data-vertable="ver2">
+                    <thead>
+                    <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1">Vehicle</th>
+                        <th class="column100 column2" data-column="column2">Driver</th>
+                        <th class="column100 column3" data-column="column3">Date start</th>
+                        <th class="column100 column4" data-column="column4">Date end</th>
+                        <th class="column100 column5" data-column="column5">Issued by</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for period in periods %}
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">{{ period.vehicle.plate }}</td>
+                        <td class="column100 column2" data-column="column2">{{ period.driver }}</td>
+                        <td class="column100 column3" data-column="column3">{{ period.start_date|date:"d/m/Y" }}</td>
+                        <td class="column100 column4" data-column="column4">{{ period.end_date|date:"d/m/Y" }}</td>
+                        <td class="column100 column5" data-column="column5">{{period.added_by}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
 
-        <td>
-
-          <div class="d-flex align-items-center">
-
-            <div class="ms-3">
-              <p class="fw-bold mb-1">{{ period.vehicle.plate }}</p>
-              <p class="text-muted mb-0">{{period.vehicle.model.brand}} {{period.vehicle.model}}</p>
+                </table>
             </div>
-          </div>
 
-        </td>
-          <td>
-          <p class="fw-normal mb-1">{{ period.driver }}</p>
-        </td>
-          <td>
-          <p class="fw-normal mb-1">{{ period.start_date|date:"d/m/Y" }}</p>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{ period.end_date|date:"d/m/Y" }}</p>
-        </td>
-        <td>{{period.added_by}}</td>
-
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-<a href="{% url 'period-create' %}" class="btn btn-primary" style="position: relative" role="button">Add case</a>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const rows = document.querySelectorAll(".clickable-row");
-    rows.forEach((row) => {
-      row.addEventListener("click", () => {
-        const link = row.getAttribute("data-href");
-        window.location.href = link;
-      });
-    });
-  });
-</script>
+        </div>
+    </div>
+</div>
+<a href="{% url 'vehicle-create' %}">Add New Vehicle</a>
 {% endblock %}
-
-
- <section class="pb-4">
-  <div class="bg-white border rounded-5">
-
-    

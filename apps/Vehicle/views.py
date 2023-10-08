@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ImproperlyConfigured
-from django.shortcuts import redirect
+from django.db.models import OuterRef, Subquery
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from .models import Vehicle, VehicleDriverPeriod
@@ -8,13 +10,27 @@ from .models import Vehicle, VehicleDriverPeriod
 
 class VehicleListView(LoginRequiredMixin, ListView):
     model = Vehicle
-    template_name = "vehicle_list.html"  # Create a template for displaying the list of Vehicle
+    template_name = "vehicle_list.html"
     context_object_name = "vehicles"
     login_url = "login"
 
     def get_queryset(self):
-        return Vehicle.objects.all()
 
+        # last_driver_name_subquery = VehicleDriverPeriod.objects.filter(
+        #     vehicle=OuterRef("pk")
+        # ).order_by("-start_date").values("driver__first_name")[:1]
+        last_driver_name_subquery = VehicleDriverPeriod.objects.filter(
+            vehicle=OuterRef("pk")
+        ).order_by("-start_date").values("driver__first_name")[:1]
+        vehicles = Vehicle.objects.annotate(
+            last_driver_name=Subquery(last_driver_name_subquery)
+        ).prefetch_related('vehicledriverperiod_set')
+
+        return vehicles
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
     # def get_context_data(self, *, object_list=None, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -30,14 +46,12 @@ class VehicleDetailView(LoginRequiredMixin, DetailView):
     context_object_name = "vehicle"  # Name of the context variable for the Vehicle object
     login_url = "login"
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['table_columns'] = ("Vehicle", "Date", "Liters", "Amount", "Customer")
 
         return context
-
-    # def get_queryset(self):
-    #     return Vehicle.objects.filter(pk=1)
 
 
 class VehicleCreateView(LoginRequiredMixin, CreateView):
@@ -106,4 +120,7 @@ class PeriodCreateView(LoginRequiredMixin, CreateView):
                 self.request.user.has_perms(perms)
         )
 
+
+def test_page(request):
+    return render(request, "examples/calendar.html")
 
